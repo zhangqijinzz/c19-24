@@ -24,6 +24,13 @@ export interface FieldSize {
   height: number;
 }
 
+export interface Rect {
+  left: number;
+  top: number;
+  right: number;
+  bottom: number;
+}
+
 export interface LayoutDocument {
   version: 1;
   title: string;
