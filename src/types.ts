@@ -76,3 +76,31 @@ export interface Notice {
   tone: 'info' | 'success' | 'warning' | 'error';
   message: string;
 }
+
+export type AlignmentType = 'left' | 'center-h' | 'right' | 'top' | 'center-v' | 'bottom';
+export type DistributionType = 'horizontal' | 'vertical';
+
+export type BatchOperation =
+  | { type: 'align'; alignment: AlignmentType }
+  | { type: 'distribute'; direction: DistributionType }
+  | { type: 'resize'; width?: number; height?: number }
+  | { type: 'rotate' };
+
+export type BatchRejectReason = 'overlap' | 'bounds' | 'channel' | 'distribute-count' | 'spacing' | 'invalid-size' | 'empty-selection';
+
+export interface BatchOutcome {
+  ok: boolean;
+  elements: ExpoElement[];
+  affectedIds: string[];
+  reason?: BatchRejectReason;
+  message: string;
+}
+
+export interface SelectionBounds {
+  left: number;
+  top: number;
+  right: number;
+  bottom: number;
+  width: number;
+  height: number;
+}
